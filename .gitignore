@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Cifar files
+/cifar-100-python
+cifar.tar.gz
