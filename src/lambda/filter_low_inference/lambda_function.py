@@ -1,16 +1,16 @@
 import json
 
 
-THRESHOLD = .7
+THRESHOLD = .93
 
 
 def lambda_handler(event, context):
     
     # Grab the inferences from the event
-    inference_bicycle, inference_motorcycle = event["body"]["inferences"]  ## TODO: fill in
+    inferences = event["body"]["inferences"]  ## TODO: fill in
     
     # Check if any values in our inferences are above THRESHOLD
-    meets_threshold = (inference_bicycle >= THRESHOLD) or (inference_motorcycle >= THRESHOLD) ## TODO: fill in
+    meets_threshold = any([inference > THRESHOLD for inference in inferences]) ## TODO: fill in
         
     
     # If our threshold is met, pass our data back out of the
