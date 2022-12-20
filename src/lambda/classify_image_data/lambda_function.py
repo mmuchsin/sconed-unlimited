@@ -24,8 +24,8 @@ def lambda_handler(event, context):
     inferences = predictor.predict(image)  ## TODO: fill in
     
     # We return the data back to the Step Function    
-    event["body"]["inferences"] = inferences.decode('utf-8')
+    event["body"]["inferences"] = json.loads(inferences)
     return {
         'statusCode': 200,
-        'body': json.dumps(event)
+        'body': event['body']
     }
