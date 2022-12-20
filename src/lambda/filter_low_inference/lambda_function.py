@@ -15,11 +15,12 @@ def lambda_handler(event, context):
     
     # If our threshold is met, pass our data back out of the
     # Step Function, else, end the Step Function with an error
-    try:
-        if meets_threshold:
-            return {
+    if meets_threshold:
+        pass
+    else:
+        raise Exception("THRESHOLD_CONFIDENCE_NOT_MET")    
+        
+    return {
                 'statusCode': 200,
                 'body': json.dumps(event)
-            }
-    except Exception as e:
-        raise e("THRESHOLD_CONFIDENCE_NOT_MET")    
+            } 
